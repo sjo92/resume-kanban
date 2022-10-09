@@ -1,0 +1,62 @@
+<form class="example-container" [formGroup]="jobForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <input matInput formControlName="company">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Job Title</mat-label>
+        <input matInput formControlName="job_title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="applied">Applied</mat-option>
+            <mat-option value="interview-hr">HR Interview</mat-option>
+            <mat-option value="interview-tech">Tech Interview</mat-option>
+            <mat-option value="post-interview">Waiting for Review</mat-option>
+            <mat-option value="rejected">rejected</mat-option>
+            <mat-option value="offered">offered</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Kanban</mat-label>
+        <mat-select formControlName="board">
+            <mat-option value="backlog">Backlog</mat-option>
+            <mat-option value="inprogress">In Progress</mat-option>
+            <mat-option value="done">Done</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Headhunter</mat-label>
+        <input matInput cdkFocusInitial formControlName="job_title" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contact person</mat-label>
+        <input matInput cdkFocusInitial formControlName="contact_person" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contact Email</mat-label>
+        <input matInput cdkFocusInitial formControlName="contact_email" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>URL</mat-label>
+        <input matInput cdkFocusInitial formControlName="url" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="job_description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Note</mat-label>
+        <textarea matInput formControlName="note"></textarea>
+    </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-button (click)="submit()">OK</button>
+        <button mat-button (click)="cancel()">Cancel</button>
+    </div>
+
+</form>

@@ -1,0 +1,6 @@
+<mat-card class="item" *ngIf="job" (dblclick)="edit.emit(job)">
+    <h2>{{ job.company }}</h2>
+    <p>
+      {{ job.job_title }}
+    </p>
+  </mat-card>

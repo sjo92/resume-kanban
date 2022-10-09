@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "resume-kanban": {
+      "hosting": {
+        "resume-kanban": [
+          "resume-kanban"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "resume-kanban"
+  }
+}
