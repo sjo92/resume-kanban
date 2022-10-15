@@ -3,61 +3,65 @@
         <div class="row my-3">
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">Company Name</label>
-                <input matInput type="email" class="form-control form-control-sm" formControlName="company"
-                    value="{{job$?job$.company:'Company Name'}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'company'"
+                   >
             </div>
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">Job Title</label>
-                <input type="email" class="form-control form-control-sm" id="job_title"
-                    value="{{job$?job$.job_title:''}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'job_title'">
             </div>
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">Salary</label>
-                <input type="email" class="form-control form-control-sm" id="salary"
-                    value="{{job$?job$.salary:''}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'salary'">
             </div>
         </div>
         <div class="row my-3">
             <div class="col-3">
-                <label for="exampleFormControlInput1" class="form-label">Status</label>
-                <input type="email" class="form-control form-control-sm" id="status"
-                    value="{{job$?job$.status:''}}">
+                <mat-label>Status</mat-label>
+                <mat-select class="form-control" [formControlName]="'status'">
+                    <mat-option value="applied">Applied</mat-option>
+                    <mat-option value="interview-hr">HR Interview</mat-option>
+                    <mat-option value="interview-tech">Tech Interview</mat-option>
+                    <mat-option value="post-interview">Waiting for Review</mat-option>
+                    <mat-option value="rejected">rejected</mat-option>
+                    <mat-option value="offered">offered</mat-option>
+                </mat-select>
             </div>
             <div class="col-3">
-                <label for="exampleFormControlInput1" class="form-label">Kanban</label>
-                <input type="email" class="form-control form-control-sm" id="board"
-                    value="{{job$?job$.board:'backlog'}}">
+                <mat-label>Kanban</mat-label>
+                <mat-select class="form-control" [formControlName]="'board'">
+                    <mat-option value="backlog">Backlog</mat-option>
+                    <mat-option value="inprogress">In Progress</mat-option>
+                    <mat-option value="done">Done</mat-option>
+                </mat-select>
             </div>
         </div>
         <div class="row my-3">
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">Headhunter</label>
-                <input type="email" class="form-control form-control-sm" id="headhunter"
-                value="{{job$?job$.headhunter:''}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'headhunter'">
             </div>
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" class="form-control form-control-sm" id="board"
-                    value="{{job$?job$.email:''}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'contact_email'">
             </div>
 
             <div class="col-3">
                 <label for="exampleFormControlInput1" class="form-label">URL</label>
-                <input type="email" class="form-control form-control-sm" id="headhunter"
-                    value="{{job$?job$.url:''}}">
+                <input type="email" class="form-control form-control-sm" [formControlName]="'url'">
             </div>
 
         </div>
         <div class="row my-3">
             <div class="col">
                 <label for="exampleFormControlTextarea1" class="form-label">Job Description</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="10"></textarea>
+                <textarea class="form-control form-control-sm" [formControlName]="'job_description'" rows="10"></textarea>
             </div>
         </div>
         <div class="row my-3">
             <div class="col">
                 <label for="exampleFormControlTextarea1" class="form-label">Note</label>
-                <textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="10"></textarea>
+                <textarea class="form-control form-control-sm" [formControlName]="'note'" rows="10"></textarea>
             </div>
         </div>
         <div class="row my-3">

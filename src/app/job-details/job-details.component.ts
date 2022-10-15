@@ -44,7 +44,29 @@ export class JobDetailsComponent implements OnInit {
   getJob():void {
     this.jobId = this.route.snapshot.paramMap.get('id');
     this.jobService.getJobById(this.jobId).subscribe(data => {
-      this.job$ = data
+      if (this.jobForm) {
+        this.jobForm.patchValue(
+          {
+            company: data.company,    
+            job_title: data.job_title,
+            status: data.status,
+            board: data.board,
+            headhunter: data.headhunter,
+            contact_person: data.contact_person,
+            contact_email: data.contact_email,
+            url: data.url,
+            createdAt: data.createdAt,
+            job_description: data.job_description,
+            salary: data.salary,
+            note: data.note,
+          },
+          {
+            emitEvent: false,
+            onlySelf: true,
+          }
+        )
+      }
+
     })
     
   }

@@ -60,6 +60,8 @@ export class JobService {
       map((action) => {
         const data = action.payload.data() as Job;
         const _id = action.payload.id;
+        console.log("ID:", _id)
+        console.log("getJob:", data)
         return { _id, ...data };
       })
     );

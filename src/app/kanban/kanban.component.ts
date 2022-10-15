@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Task } from '../task/task';
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
@@ -53,11 +53,12 @@ export class KanbanComponent {
 
   drop(event: any): void {
     if (event.previousContainer === event.container) {
-      return;
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
     const item = event.previousContainer.data[event.previousIndex];
-    this.kanbanService.changeItem(event.previousContainer.id,event.container.id, item)
-
+    this.kanbanService.changeItem(event.previousContainer.id, event.container.id, item)
+    console.log("previndex:", event.previousIndex)
+    console.log("currIndex:", event.currentIndex)
     transferArrayItem(
       event.previousContainer.data,
       event.container.data,
