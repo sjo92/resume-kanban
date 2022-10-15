@@ -1,0 +1,52 @@
+<div class="m-5 login-wrapper row" >
+    <div class="col-4"></div> 
+    <ng-container *ngIf="type==='register'">
+        <mat-card class="box col-4">
+            <mat-card-header>
+                <mat-card-title>Register</mat-card-title>
+            </mat-card-header>
+            <form class="example-form" [formGroup]="registerForm">
+                <mat-card-content>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Username" [formControlName]="'username'">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email" [formControlName]="'email'">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password" type="password" [formControlName]="'password'">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Choose a role...</mat-label>
+                        <mat-select [formControlName]="'role'">
+                            <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-card-content>
+                <button  mat-stroked-button color="primary" class="btn-block mb-2" (click)="register()">Register</button>
+                <div style="font-size: 12px;">Already have an accout? Please <a (click)="changeForm('login')">Sign in</a></div>
+            </form>
+        </mat-card>
+    </ng-container>
+    <ng-container *ngIf="type!=='register'">
+        <mat-card class="box col-4">
+            <mat-card-header>
+                <mat-card-title>Sign In</mat-card-title>
+            </mat-card-header>
+            <form class="example-form" [formGroup]="loginForm">
+                <mat-card-content>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email" [formControlName]="'email'">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password" type="password" [formControlName]="'password'">
+                    </mat-form-field>
+                </mat-card-content>
+                <button mat-stroked-button color="accent" class="btn-block" (click)="login()">Login</button>
+                <div style="font-size: 12px;">Don't have an accout? Please <a (click)="changeForm('register')">Register</a></div>
+            </form>
+        </mat-card>
+    </ng-container>
+    <div class="col-4"></div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Task } from '../task/task';
 
@@ -9,15 +9,15 @@ import { Task } from '../task/task';
   styleUrls: ['./task-dialog.component.css'],
 })
 export class TaskDialogComponent {
-  colorControl = new FormControl('primary');
-  fontSizeControl = new FormControl(16, Validators.min(10));
+  colorControl = new UntypedFormControl('primary');
+  fontSizeControl = new UntypedFormControl(16, Validators.min(10));
   options = this._formBuilder.group({
     color: this.colorControl,
     fontSize: this.fontSizeControl,
   });
   private backupTask: Partial<Task> = { ...this.data.task };
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private _formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<TaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TaskDialogData
   ) {}

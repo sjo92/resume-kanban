@@ -26,7 +26,8 @@ import { JobDialogComponent } from './job-dialog/job-dialog.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { HeaderComponent } from './header/header.component';
-import { MainPageComponent } from './main-page/main-page.component'; 
+import { MainPageComponent } from './main-page/main-page.component';
+import { SignInComponent } from './sign-in/sign-in.component'; 
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     JobDetailsComponent,
     JobListComponent,
     HeaderComponent,
-    MainPageComponent
+    MainPageComponent,
+    SignInComponent
   ],
   imports: [
     AppRoutingModule,

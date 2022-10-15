@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { Job } from '../model/job';
 
 @Component({
@@ -11,24 +11,24 @@ import { Job } from '../model/job';
 export class JobDialogComponent {
   selectedJob!: Job;
 
-  jobForm = new FormGroup({
-    company: new FormControl(''),    
-    job_title: new FormControl(''),
-    status: new FormControl(''),
-    board: new FormControl(''),
-    headhunter: new FormControl(''),
-    contact_person: new FormControl(''),
-    contact_email: new FormControl(''),
-    url: new FormControl(''),
-    createdAt: new FormControl(''),
-    job_description: new FormControl(''),
-    salary: new FormControl(''),
-    note: new FormControl(''),
+  jobForm = new UntypedFormGroup({
+    company: new UntypedFormControl(''),    
+    job_title: new UntypedFormControl(''),
+    status: new UntypedFormControl(''),
+    board: new UntypedFormControl(''),
+    headhunter: new UntypedFormControl(''),
+    contact_person: new UntypedFormControl(''),
+    contact_email: new UntypedFormControl(''),
+    url: new UntypedFormControl(''),
+    createdAt: new UntypedFormControl(''),
+    job_description: new UntypedFormControl(''),
+    salary: new UntypedFormControl(''),
+    note: new UntypedFormControl(''),
   })
 
   private backupTask: Partial<Job> = { ...this.data.job };
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private _formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<JobDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: JobDialogData
   ) {}

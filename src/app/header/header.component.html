@@ -40,6 +40,9 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
+        <form class="d-flex mx-1">
+          <button *ngIf="loggedin" class="btn btn-outline-light" (click)="logout()">Log Out</button>
+        </form>
       </div>
     </div>
   </nav>

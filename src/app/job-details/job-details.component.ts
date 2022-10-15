@@ -1,6 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs'
@@ -16,19 +15,19 @@ export class JobDetailsComponent implements OnInit {
 
   job$!: any;
   jobId: any;
-  jobForm = new FormGroup({
-    company: new FormControl(''),    
-    job_title: new FormControl(''),
-    status: new FormControl(''),
-    board: new FormControl(''),
-    headhunter: new FormControl(''),
-    contact_person: new FormControl(''),
-    contact_email: new FormControl(''),
-    url: new FormControl(''),
-    createdAt: new FormControl(''),
-    job_description: new FormControl(''),
-    salary: new FormControl(''),
-    note: new FormControl(''),
+  jobForm = new UntypedFormGroup({
+    company: new UntypedFormControl(''),    
+    job_title: new UntypedFormControl(''),
+    status: new UntypedFormControl(''),
+    board: new UntypedFormControl(''),
+    headhunter: new UntypedFormControl(''),
+    contact_person: new UntypedFormControl(''),
+    contact_email: new UntypedFormControl(''),
+    url: new UntypedFormControl(''),
+    createdAt: new UntypedFormControl(''),
+    job_description: new UntypedFormControl(''),
+    salary: new UntypedFormControl(''),
+    note: new UntypedFormControl(''),
   })
 
   constructor(private jobService:JobService,
@@ -37,8 +36,7 @@ export class JobDetailsComponent implements OnInit {
     private modalService: NgbModal  ) {}
   
   ngOnInit() {
-    this.getJob()
-    
+    this.getJob() 
   }
   
   getJob():void {

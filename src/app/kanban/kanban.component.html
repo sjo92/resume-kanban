@@ -1,5 +1,5 @@
 <div class="row container-wrapper" cdkDropListGroup>
-    <div class="col">
+    <div class="col-4">
       <h1 style="text-align: center;">Backlog</h1>
       <div class="container">
         <div cdkDropList class="kanban-list" id="backlog" #todoList="cdkDropList" [cdkDropListData]="backlog | async"
@@ -10,7 +10,7 @@
     </div>
     </div>
 
-    <div class="col">
+    <div class="col-4">
       <h1 style="text-align: center;">In Progress</h1>
       <div class="container">
         <div cdkDropList class="kanban-list" id="inprogress" #inProgressList="cdkDropList" [cdkDropListData]="inProgress | async"
@@ -22,7 +22,7 @@
           </div>
     </div>
 
-    <div class="col">
+    <div class="col-4">
       <h1 style="text-align: center;">Done</h1>
       <div class="container">
         <div cdkDropList class="kanban-list" id="done" #doneList="cdkDropList" [cdkDropListData]="done | async"
