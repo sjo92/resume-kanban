@@ -12,6 +12,7 @@ import { KanbanService } from '../services/kanban.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { JobDetailsComponent } from '../job-details/job-details.component';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { JobDetailsComponent } from '../job-details/job-details.component';
   styleUrls: ['./kanban.component.css']
 })
 export class KanbanComponent {
-  constructor(private route: ActivatedRoute,private router: Router , private dialog: MatDialog, private store: AngularFirestore, private jobService: JobService, private kanbanService: KanbanService) {}
+  constructor(private route: ActivatedRoute,private router: Router , private authService: AuthService, private dialog: MatDialog, private store: AngularFirestore, private jobService: JobService, private kanbanService: KanbanService) {}
 
   backlog = this.kanbanService.getKanbanBoards('backlog');
   inProgress= this.kanbanService.getKanbanBoards('inprogress')
@@ -31,13 +32,15 @@ export class KanbanComponent {
 
 
   ngOnInit(): void {
+    this.authService.GetUserData()
+    console.log("Auth Data:",  this.authService.GetUserData())
     this.backlog = this.kanbanService.getKanbanBoards('backlog')
     this.inProgress = this.kanbanService.getKanbanBoards('inprogress')
     this.done = this.kanbanService.getKanbanBoards('done')
     this.jobs$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.selectedId = params.get('id');
-        return this.jobService.getJobById(this.selectedId);
+        return this.jobService.getJobByUser(this.selectedId);
       })
     );
   }

@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Some test user info
+Username: John Doe
+email: johndoe@resume.com
+password: test123!
+role: admin
+
+## TO DO ##
+1. How to set the username and other user related info after signing up?
+2. How to build a new user and put relevant info into the object? See register() method in sign-in.component.ts
+3. How to filter values with uid in the firestore? On refresh, the user id indicates null 
+See this.authService.GetUserData()

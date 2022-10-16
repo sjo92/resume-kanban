@@ -12,5 +12,6 @@ export class Job {
     salary: string | undefined;
     note: string | undefined;
     board: string| undefined;
+    user_id: string | undefined;
   }
   

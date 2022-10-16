@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { User } from '../model/user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class SignInComponent implements OnInit {
   Roles: any = ['Admin', 'Author', 'Reader'];
   type ='register'
+  currUser: any
   constructor(private authService: AuthService) { }
 
   registerForm = new UntypedFormGroup({
@@ -32,11 +34,23 @@ export class SignInComponent implements OnInit {
     this.type = type;
   }
   register() {
+    if(this.currUser){
+      //this.currUser.username = this.registerForm.get('username')!.value;
+      this.currUser.email = this.registerForm.get('email')!.value;
+      //this.currUser.role = this.registerForm.get('role')!.value;
+      const password_ = this.registerForm.get('password')!.value;
+      this.authService.SignUp(this.currUser.email, password_)
+    console.log("sign up sccessful")
+  } else {
     const email_ = this.registerForm.get('email')!.value;
+    //this.currUser.role = this.registerForm.get('role')!.value;
     const password_ = this.registerForm.get('password')!.value;
     this.authService.SignUp(email_, password_)
     console.log("sign up sccessful")
   }
+
+}
+
   login() {
     const email_ = this.loginForm.get('email')!.value;
     const password_ = this.loginForm.get('password')!.value;

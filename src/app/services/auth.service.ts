@@ -1,5 +1,5 @@
 import { Injectable, NgZone, Output } from '@angular/core';
-import { User } from '../services/user';
+import { User } from '../model/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -65,6 +65,7 @@ export class AuthService {
         up and returns promise */
         console.log("result:", result)
         this.SetUserData(result.user);
+        this.router.navigate(['kanban']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -127,14 +128,19 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      //sername: user.username,
+      //role: user.role
     };
     return userRef.set(userData, {
       merge: true,
     });
   }
+
+  GetUserData() {
+    const authData = auth.getAuth();
+    return authData.currentUser
+  }
+  
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {

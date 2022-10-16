@@ -5,6 +5,7 @@ import { updateDoc, serverTimestamp } from "firebase/firestore";
 import { Job } from '../model/job';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,27 +15,27 @@ export class JobService {
 
   private itemValue = new Subject<any>();
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private authService: AuthService) {}
 
   
   postJob(data: any): Promise<any> {
     let createdID = data.internal_id? data.internal_id:this.IDgenerator(data.job_title)
     console.log("Data: ",data, "Id:", createdID)
     return this.afs.collection('jobs').doc(createdID).set({
-      internal_id: createdID,
-      company: data.company,
-      job_title: data.job_title,
-      status: data.status,
-      headhunter: data.headhunter,
-      contact_person: data.contact_person,
-      contact_email: data.contact_email,
-      url: data.url,
-      createdAt: serverTimestamp(),
-      job_description: data.job_description,
-      salary: data.salary,
-      note: data.note,
-      board: data.board
-    });
+      internal_id: createdID || null,
+      company: data.company || null,
+      job_title: data.job_title || null,
+      status: data.status || null,
+      headhunter: data.headhunter || null,
+      contact_person: data.contact_person || null,
+      contact_email: data.contact_email || null,
+      url: data.url || null,
+      createdAt: serverTimestamp() || null,
+      job_description: data.job_description || null,
+      salary: data.salary || null,
+      note: data.note || null,
+      user_id: this.authService.GetUserData()?.uid || null,
+    })
   }
 
   getJobs(): Observable<Job[]> {
@@ -67,6 +68,10 @@ export class JobService {
     );
   }
 
+  getJobByUser(user_id:any): any {
+    return this.afs
+    .collection('jobs', ref => ref.where('user_id', '==', user_id))
+  }
   deleteJobById(id:any): void {
     this.afs.collection('jobs').doc(id).delete();
   }
